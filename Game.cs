@@ -1,57 +1,52 @@
-
-enum GameState
+namespace MouseCatGame
 {
-Start,
-End
-}
-
-
-class Game
-{
-    public int size; //размер игрового поля
-    public Player cat;
-    public Player mouse;
-    public GameState state;
-    public static string InputFile = "1.ChaseData.txt";
-    public static string OutputFile = "1.PursuitLog.txt";
-
-
-    public Game (int size)
+    class Game
     {
-        this.size = size; // размер поля
-        cat = new Player("Cat");
-        mouse = new Player("Mouse");
-        state = GameState.Start; // статус
-    }
+        public int size; //размер игрового поля
+        public Player cat;
+        public Player mouse;
+        public GameState state;
+        public static string InputFile = "1.ChaseData.txt";
+        public static string OutputFile = "1.PursuitLog.txt";
 
-    public void Run()
-    {
-        while (state != GameState.End) //пока не конец игры
+
+        public Game (int size)
         {
-            // прочитать команду  
-            // если все команды исчерпаны, закончить игру (state 
-            //выполнить команду DoMoveCommand или DoPrintCommand 
-            // если мышь поймана, закончить игру (state = GameState.End;)
+            this.size = size; // размер поля
+            cat = new Player("Cat");
+            mouse = new Player("Mouse");
+            state = GameState.Start; // статус
         }
-    }
-        
-    private void DoMoveCommand(char command, int steps)
-    {
-        switch (command)
+
+        public void Run()
         {
-            case 'M': mouse.Move(steps); break;
-            case 'C': cat.Move(steps); break;
+            while (state != GameState.End) //пока не конец игры
+            {
+                // прочиDoCommandтать команду  
+                // если все команды исчерпаны, закончить игру (state 
+                //выполнить команду DoMoveCommand или DoPrintCommand 
+                // если мышь поймана, закончить игру (state = GameState.End;)
+            }
         }
-    }
+            
+        private void DoMoveCommand(char command, int steps)
+        {
+            switch (command)
+            {
+                case 'M': mouse.Move(steps); break;
+                case 'C': cat.Move(steps); break;
+            }
+        }
 
-    private void DoPrintCommand()
-    {
-        //вывод позиций игроков и р асстояния между ними (если это возможно)
-    }
+        private void DoPrintCommand()
+        {
+            //вывод позиций игроков и р асстояния между ними (если это возможно)
+        }
 
-    private int GetDistance()
-    {
-        //найти расстояние между игроками cat.location - mouse.location 
-        return 0;
+        private int GetDistance()
+        {
+            //найти расстояние между игроками cat.location - mouse.location 
+            return 0;
+        }
     }
 }
